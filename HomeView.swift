@@ -177,7 +177,10 @@ Button {
             }
           .sheet(isPresented: $showPaywall) { PaywallView() }
             .sheet(isPresented: $showCompletion) { ArcCompletionView(viewModel: viewModel) }
-            .sheet(isPresented: $showWeekly) { WeeklyReviewView(viewModel: viewModel) }
+            .sheet(isPresented: $showWeekly) {WeeklyReviewView(viewModel: viewModel)
+        .presentationBackground(.black)      // ✅ makes the sheet dark
+        .preferredColorScheme(.dark)         // ✅ ensures white text stays visible
+        .presentationDragIndicator(.visible) // optional}
             .task { viewModel.refresh() }
         }
     }
